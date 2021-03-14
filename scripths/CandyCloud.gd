@@ -15,24 +15,25 @@ func _ready():
 	# Initialization here
 	coulddown=0.0
 	
-	width=get_node("Shape").get_viewport_rect().size.width-32
+	#width=get_node("Shape").get_viewport_rect().size.width-32
+	width = $Shape.get_viewport_rect().size.x
 	
-	
-	set_fixed_process(true)
+	#set_fixed_process(true)
 
-func _fixed_process(delta):
+func _process(delta):
 	
 	randomize()
 	if(coulddown<=0.0):
 		var c = candy.instance()
 		var r = int(width/ 10)
 		var rx = (randi()%10)*r		
-		var newX = int(get_pos().x-width/2+rx+16)
+		var newX = int(position.x-width/2+rx+16)
 		#var string = str(newX," r-. ",rx)
 		#get_parent().get_node("Label").set_text(string)
-		var cpos = Vector2(newX,get_pos().y)
+		var cpos = Vector2(newX,position.y)
 		#get_node("Label").set_text(str( cpos.x," newx: ",newX))
-		c.set_pos(cpos)
+		#c.set_pos(cpos)
+		c.position = cpos
 		get_parent().add_child(c)
 		
 		coulddown=time #resetea coulddown

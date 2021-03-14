@@ -20,8 +20,10 @@ func _ready():
 
 func AjustToScreen():
 	
+
 	lbl_give.set_text("give")
 	lbl_loss.set_text("loss")
+	
 func giveAdd():
 	gcount+=1
 	lbl_give.set_text(str(gcount))
